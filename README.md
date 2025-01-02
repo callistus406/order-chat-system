@@ -135,6 +135,7 @@ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' post
 ```text
 Username: admin
 Password: admin@1234
+```
 * The credentials can also be found in the .env file
 ---
 
