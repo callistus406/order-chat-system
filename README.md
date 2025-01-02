@@ -105,17 +105,17 @@ docker-compose -f docker-compose-test.yml up
 If you're running the app **locally**, ensure your `.env` file has the correct database connection:
 
 ```bash
-`DATABASE_URL="postgresql://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@localhost:5432/${DATABASE_NAME}?schema=public"`
+DATABASE_URL="postgresql://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@localhost:5432/${DATABASE_NAME}?schema=public"
 ```
 If you're running via **Docker**, ensure the `DATABASE_URL` points to the correct Docker network IP:
 
 ```bash
-`DATABASE_URL="postgresql://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@postgres_db:5432/${DATABASE_NAME}?schema=public"`
+DATABASE_URL="postgresql://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@postgres_db:5432/${DATABASE_NAME}?schema=public"
 ```
 To find your Docker database IP:
 
 ```bash
-`docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' postgres_db`
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' postgres_db
 ```
 ---
 
