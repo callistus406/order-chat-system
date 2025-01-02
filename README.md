@@ -40,6 +40,7 @@ Build and start the Docker containers:
 
 ```bash
 `docker-compose up --build`
+```
 
 * **API Base URL:** [http://localhost:3000](http://localhost:3000)  
 * **Prisma Studio (Docker):** [http://localhost:5500](http://localhost:5500)  
@@ -51,6 +52,7 @@ Ensure you have a running instance of **PostgreSQL** locally.
 
 ```bash
 `yarn start:dev`
+```
 
 * **API Base URL:** [http://localhost:3000](http://localhost:3000)  
 * **API Documentation (Local):** [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
@@ -62,6 +64,7 @@ Ensure you have a running instance of **PostgreSQL** locally.
 **Local Environment:**  
 ```bash   
 `yarn prisma studio`
+```
 
 * Accessible at: [http://localhost:5555](http://localhost:5555)  
 * **Docker Environment:**  
@@ -89,12 +92,12 @@ To test WebSocket functionalities, visit:
 
 ```bash
 `yarn test:integration`
-
+```
 ### **Docker Environment:**
 
 ```bash
 `docker-compose -f docker-compose-test.yml up`
-
+```
 ---
 
 ## **⚙️ Database Configuration**
@@ -103,17 +106,17 @@ If you're running the app **locally**, ensure your `.env` file has the correct d
 
 ```bash
 `DATABASE_URL="postgresql://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@localhost:5432/${DATABASE_NAME}?schema=public"`
-
+```
 If you're running via **Docker**, ensure the `DATABASE_URL` points to the correct Docker network IP:
 
 ```bash
 `DATABASE_URL="postgresql://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@postgres_db:5432/${DATABASE_NAME}?schema=public"`
-
+```
 To find your Docker database IP:
 
 ```bash
 `docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' postgres_db`
-
+```
 ---
 
 ## **✅ Recommended Setup**
