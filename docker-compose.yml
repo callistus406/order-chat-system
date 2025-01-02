@@ -1,0 +1,69 @@
+version: '3.9'
+
+services:
+  app:
+    image: node:18
+    container_name: order_system
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./logs:/app/logs
+    ports:
+      - '3000:3000'
+    env_file:
+      - ./.env
+    depends_on:
+      - postgres_db
+    networks:
+      - order_system-network
+    restart: on-failure
+
+  postgres_db:
+    image: postgres:latest
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - order_system-network
+  prisma_studio:
+    image: node:18
+    container_name: prisma_studio
+    working_dir: /app
+    volumes:
+      - .:/app
+    entrypoint: ['npx', 'prisma', 'studio']
+    ports:
+      - '5555:5555'
+    depends_on:
+      - postgres_db
+    networks:
+      - order_system-network
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: order_system-docs
+    ports:
+      - '8081:8080'
+    environment:
+      SWAGGER_JSON: /swagger/swagger.yaml
+    volumes:
+      - ./docs/swagger/swagger.yaml:/swagger/swagger.yaml
+    networks:
+      - order_system-network
+
+volumes:
+  postgres_data:
+
+networks:
+  order_system-network:
+    driver: bridge

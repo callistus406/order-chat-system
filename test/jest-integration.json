@@ -1,0 +1,16 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": "../",
+  "testRegex": ".*\\.integration\\.spec\\.ts$",
+  "testEnvironment": "node",
+  "moduleNameMapper": {
+    "^src/(.*)$": "<rootDir>/src/$1"
+  },
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "testPathIgnorePatterns": ["/node_modules/"],
+  "setupFilesAfterEnv": ["<rootDir>/test/setup.ts"],
+  "maxConcurrency": 1,
+  "maxWorkers": 1
+}

@@ -1,0 +1,18 @@
+FROM node:latest
+
+WORKDIR /app
+
+COPY package.json yarn.lock ./
+RUN yarn install
+
+COPY . .
+
+RUN yarn prisma generate
+
+ENV PORT=3000
+EXPOSE $PORT
+
+ENV NODE_ENV=test
+ENV DATABASE_URL="postgresql://postgres:password@postgres_db:5432/test_db?schema=public"
+
+CMD sh -c " echo ' Waiting for the database to be ready...' &&   yarn prisma migrate dev --name init && echo ' Database migrations completed!' &&   echo ' Database seeding completed!' &&   echo 'Running integration tests...' &&   yarn test:integration &&   echo '✅ Integration tests completed successfully!'"

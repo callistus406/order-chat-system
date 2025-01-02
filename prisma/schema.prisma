@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User Model
+model User {
+  id        Int       @id @default(autoincrement())
+  username  String    @unique
+  email     String    @unique
+  password  String
+  role      UserRole  @default(USER)
+  orders    Order[]   @relation("UserOrders")
+  messages  Message[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+// Enum for User Roles
+enum UserRole {
+  ADMIN
+  USER
+}
+
+// Order Model
+model Order {
+  id            Int         @id @default(autoincrement())
+  description   String
+  specification String
+  quantity      Int
+  status        OrderStatus @default(REVIEW)
+  userId        Int
+  user          User        @relation("UserOrders", fields: [userId], references: [id])
+  chatRoom      ChatRoom?   @relation("OrderChatRoom")
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+// Enum for Order Status
+enum OrderStatus {
+  REVIEW
+  PROCESSING
+  COMPLETED
+}
+
+// ChatRoom Model
+model ChatRoom {
+  id        Int       @id @default(autoincrement())
+  orderId   Int       @unique
+  order     Order     @relation("OrderChatRoom", fields: [orderId], references: [id], onDelete: Cascade)
+  messages  Message[]
+  isClosed  Boolean   @default(false)
+  summary   String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+
+// Message Model
+model Message {
+  id         Int      @id @default(autoincrement())
+  content    String
+  senderId   Int
+  sender     User     @relation(fields: [senderId], references: [id])
+  chatRoomId Int
+  chatRoom   ChatRoom @relation(fields: [chatRoomId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+
