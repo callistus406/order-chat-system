@@ -39,7 +39,7 @@
 Build and start the Docker containers:
 
 ```bash
-`docker-compose up --build`
+docker-compose up --build
 ```
 
 * **API Base URL:** [http://localhost:3000](http://localhost:3000)  
@@ -51,7 +51,7 @@ Build and start the Docker containers:
 Ensure you have a running instance of **PostgreSQL** locally.
 
 ```bash
-`yarn start:dev`
+yarn start:dev
 ```
 
 * **API Base URL:** [http://localhost:3000](http://localhost:3000)  
@@ -63,7 +63,7 @@ Ensure you have a running instance of **PostgreSQL** locally.
 
 **Local Environment:**  
 ```bash   
-`yarn prisma studio`
+yarn prisma studio
 ```
 
 * Accessible at: [http://localhost:5555](http://localhost:5555)  
@@ -91,12 +91,12 @@ To test WebSocket functionalities, visit:
 ### **Local Environment:**
 
 ```bash
-`yarn test:integration`
+yarn test:integration
 ```
 ### **Docker Environment:**
 
 ```bash
-`docker-compose -f docker-compose-test.yml up`
+docker-compose -f docker-compose-test.yml up
 ```
 ---
 
