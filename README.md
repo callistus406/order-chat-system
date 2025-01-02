@@ -75,7 +75,7 @@ yarn prisma studio
 ## **📑 API Documentation**
 
 * **Docker:** [http://localhost:8081](http://localhost:8081)  
-* **Local:** [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+* Not available on local
 
 ---
 
