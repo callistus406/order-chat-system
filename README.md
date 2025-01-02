@@ -68,7 +68,7 @@ yarn prisma studio
 
 * Accessible at: [http://localhost:5555](http://localhost:5555)  
 * **Docker Environment:**  
-  Accessible at: [http://localhost:5500](http://localhost:5500)
+  Accessible at: [http://localhost:5500](http://localhost:5555)
 
 ---
 
