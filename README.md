@@ -84,6 +84,16 @@ yarn prisma studio
 To test WebSocket functionalities, visit:  
 [https://task.callydev.com](https://task.callydev.com)
 
+* The WebSocket enables bidirectional communication between the admin and the user.  
+* This can be tested using two different browser instances. Then, use the [https://task.callydev.com](https://task.callydev.com) link to interact with or test the chat functionality (easy method) or with a WebSocket client of your choice.  
+* To authenticate, copy the JWT token after logging in and use it for WebSocket authentication.
+
+**Activities include:**
+
+* Joining a chat room  
+* Sending messages  
+* Closing a chat (Admin only)
+
 ---
 
 ## **🧪 Running Integration Tests**
@@ -118,6 +128,16 @@ To find your Docker database IP:
 docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' postgres_db
 ```
 ---
+
+## **📓 NOTE**
+* Once yu successfully run the server, a  default admin account will be created
+
+```text
+Username: admin
+Password: admin@1234
+* The credentials can also be found in the .env file
+---
+
 
 ## **✅ Recommended Setup**
 
