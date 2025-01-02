@@ -4,7 +4,7 @@
 
 * **Authentication & Authorization:** JWT-based authentication with RBAC (**ADMIN**, **USER**)  
 * **User Management:**  
-  * Create admin accounts  
+  * Create admin accounts   (**Admin only**)  
   * Fetch user profiles  
   * View all accounts (**Admin only**)  
 * **Order Management:**  
