@@ -126,11 +126,10 @@ To find your Docker database IP:
 
 ---
 
-## **📝 Contribution Guidelines**
+## **📝 Contact Information**
 
-* Fork the repository.  
-* Create a feature branch: `git checkout -b feature-branch`.  
-* Commit your changes: `git commit -m "Add new feature"`.  
-* Push to the branch: `git push origin feature-branch`.  
-* Open a pull request.
+* If you have any questions please contact me via.  
+* 📱  +2348137127355  
+* ✉️   callistus406@gmail.com.  
+
 
